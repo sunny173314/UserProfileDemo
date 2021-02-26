@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UserProfileDemo.Pages.PDF">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#E5EBEE">
+            <MediaElement Source="ms-appx:///darkplanet.mp4" ShowsPlaybackControls="False"
+                      IsLooping="True" Aspect="AspectFill" AutoPlay="True"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <BoxView Opacity="0.3" BackgroundColor="#00C2FF"/>
+            
+            <StackLayout Padding="50" HorizontalOptions="CenterAndExpand">
+                <!--<ImageButton Text="OPEN PDF FROM URL" Clicked="Button_Clicked" CornerRadius="50" BackgroundColor="Black" TextColor="White"/>-->
+                <Label Text="OPEN PDF FROM URL" 
+                       TextColor="White" 
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+                
+                <ImageButton Source="pdf1.png" 
+                    BackgroundColor="Transparent"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    FlexLayout.AlignSelf="Center"
+                    FlexLayout.Grow="1"
+                    Clicked="Button_Clicked"
+                    Aspect="AspectFit">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1"/>
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.8"/>
+                                </VisualState.Setters>
+                            </VisualState>
+
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
+                <StackLayout>   
+                    
+                    
+                    
+                </StackLayout>
+
+                <Label Text="OPEN PDF FROM LOCAL" 
+                       TextColor="White" 
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+
+                <ImageButton Source="pdf1.png" 
+                    BackgroundColor="Transparent"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    FlexLayout.AlignSelf="Center"
+                    FlexLayout.Grow="1"
+                    Clicked="OnOpenViewerButtonClicked"
+                    Aspect="AspectFit">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1"/>
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.8"/>
+                                </VisualState.Setters>
+                            </VisualState>
+
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
+
+                <!--<Button x:Name="openViewerButton" Text="OPEN PDF FROM LOCAL" Clicked="OnOpenViewerButtonClicked" />-->
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

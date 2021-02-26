@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UserProfileDemo.Pages.DashboardMaster"
+             Title="Master" NavigationPage.HasNavigationBar="False">
+  <StackLayout>
+    <ListView x:Name="MenuItemsListView"
+              SeparatorVisibility="None"
+              HasUnevenRows="true"
+              ItemsSource="{Binding MenuItems}">
+      <ListView.Header>
+                <Grid BackgroundColor="Black">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="10"/>
+          </Grid.RowDefinitions>
+          <!--<Label
+              Grid.Column="1"
+              Grid.Row="2"
+              Text="AppName"
+              Style="{DynamicResource SubtitleStyle}"/>-->
+                    <StackLayout Grid.Row="2" Grid.Column="1" BackgroundColor="Black" HeightRequest="200" Orientation="Horizontal" >
+                        <Frame BackgroundColor="White" HeightRequest="90" WidthRequest="90" CornerRadius="30" Padding="0" Margin="5">
+                            <!--<Label Text="S" FontAttributes="Bold" FontSize="Large" TextColor="#f21f49"-->
+                            <Image Source="profile" Aspect="AspectFill" Margin="0"/>
+                          
+                        </Frame>
+
+                        <StackLayout VerticalOptions="Center" Spacing="2">
+                            <Label Text="John Doe" FontAttributes="Bold" FontSize="Large" TextColor="White" 
+                           Margin="10,0,0,0" VerticalOptions="Center"/>
+                            <Label Text="John@sbcglobal.net" FontSize="Small" TextColor="White" 
+                           Margin="10,0,0,0" VerticalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+   
+    </Grid>
+      </ListView.Header>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+
+                    <ViewCell >
+                        <StackLayout VerticalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Padding="20,10,0,10"
+                             Spacing="20">
+
+
+
+                            <Image Source="{Binding Icon}"
+                         WidthRequest="40"
+                         HeightRequest="40"
+                         VerticalOptions="Center" />
+
+
+
+                            <Label Text="{Binding Title}"
+                         FontSize="Medium"
+                         VerticalOptions="Center"
+                         TextColor="Black"/>
+                        </StackLayout>
+                    </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

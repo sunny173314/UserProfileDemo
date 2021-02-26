@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UserProfileDemo.Pages.AppInfoPage">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#E5EBEE">
+            <MediaElement Source="ms-appx:///darkplanet.mp4" ShowsPlaybackControls="False"
+                      IsLooping="True" Aspect="AspectFill" AutoPlay="True"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Volume="0" />
+
+            <BoxView Opacity="0.3" BackgroundColor="#00C2FF"/>
+
+            <StackLayout>
+                <Label Text="AppInfo" TextColor="White" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Large"></Label>
+                <Label x:Name="PackageInfo" TextColor="White" HorizontalOptions="Center"></Label>
+                <Label x:Name="AppVersion" TextColor="White" HorizontalOptions="Center"></Label>
+                <Label x:Name="AppBuidInfo" TextColor="White" HorizontalOptions="Center"></Label>
+                <Label x:Name="ModelInfo" TextColor="White" HorizontalOptions="Center"></Label>
+                <Label x:Name="Manufacturer" TextColor="White" HorizontalOptions="Center"></Label>
+                <Label x:Name="DeviceType" TextColor="White" HorizontalOptions="Center"></Label>
+                <Label x:Name="Platform" TextColor="White" HorizontalOptions="Center"></Label>
+                <Label x:Name="AppInfoName" TextColor="White" HorizontalOptions="Center"></Label>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:UserProfileDemo"  xmlns:local2="clr-namespace:ShowHidePasswordTrigger" xmlns:local1="clr-namespace:UserProfileDemo.CustomRenderer" xmlns:local11="clr-namespace:Validations;assembly=Validations"
+    x:Class="UserProfileDemo.Pages.LoginPage"
+    BackgroundColor="White">
+    <ContentPage.Content>
+
+
+        <StackLayout BackgroundColor="#e6e6e6">
+
+            <Grid>
+                <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                    <Frame  HeightRequest="150" Padding="0" Margin="0" BackgroundColor="#e84c3d" >
+                        <Image Source="back" Aspect="AspectFill" Margin="0"></Image>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Padding="0" Margin="10,100,10,0"  HorizontalOptions="FillAndExpand">
+                    <Frame BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0">
+                        <StackLayout>
+                            <StackLayout Margin="10">
+                                <Label Text="SIGN IN" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+                            </StackLayout>
+                            <StackLayout Padding="0" Margin="15,10">
+                                <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="#e84c3d" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                            <Image Source="avatar" Aspect="AspectFill" Margin="0"/>
+                                        </Frame>
+                                        <local1:CustomEntry x:Name="userNameEntry" Text="{Binding Username}" Placeholder="Username" Keyboard="Email" TextColor="DarkGray" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0">
+                                            <Entry.Behaviors>
+                                                <local11:EmailValidatorBehavior />
+                                            </Entry.Behaviors>
+                                        </local1:CustomEntry>
+                                    </StackLayout>
+                                </Frame>
+
+
+                            </StackLayout>
+                            <StackLayout Padding="0" Margin="15,10">
+                                <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                            <Image Source="lock_icon_6813906" Aspect="AspectFill" Margin="0"/>
+                                        </Frame>
+                                        <local1:CustomEntry  Text="{Binding Password}" Placeholder="Password" IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger},Path=HidePassword}" TextColor="DarkGray" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0">
+                                            <Entry.Behaviors>
+                                                <local11:PasswordValidationBehavior/>
+                                            </Entry.Behaviors>
+                                        </local1:CustomEntry>
+                                        <ImageButton VerticalOptions="Center" Margin="0,0,30,0" HeightRequest="20" HorizontalOptions="End" Source="ic_eye_hide">
+                                            <ImageButton.Triggers>
+                                                <EventTrigger Event="Clicked">
+                                                    <local2:ShowPasswordTriggerAction ShowIcon="ic_eye" HideIcon="ic_eye_hide" x:Name="ShowPasswordActualTrigger"></local2:ShowPasswordTriggerAction>
+                                                </EventTrigger>
+                                            </ImageButton.Triggers> 
+                                            
+                                        </ImageButton>
+                                    </StackLayout> 
+                                </Frame>
+                                <StackLayout Orientation="Horizontal">
+                                    <CheckBox x:Name="chkRememberMe" IsChecked="False" CheckedChanged="ChkRememberMe_OnCheckedChanged" Color="#e84c3d"></CheckBox>
+                                    <Label Text="Remember Me" TextColor="darkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                                    <Label Text="Forgot Password" TextColor="#e84c3d" FontSize="Small" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                                </StackLayout>
+                                <Button  Text="Sign In" Command="{Binding SignInCommand}" TextColor="White" BackgroundColor="#e84c3d" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"></Button>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                    <Label Text="Still Not Connected ?" TextColor="DarkGray" FontSize="Small"></Label>
+                                    <Label Text="SIGN UP" TextColor="DarkGray" FontAttributes="Bold" FontSize="Small"></Label>
+                                </StackLayout>
+                                <StackLayout Margin="0,25,0,0" Padding="0">
+                                    <Grid>
+                                        <BoxView BackgroundColor="DarkGray" HeightRequest="1" WidthRequest="150"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Frame BackgroundColor="White" HeightRequest="45" WidthRequest="45" CornerRadius="45" HasShadow="False" BorderColor="DarkGray" Margin="0" HorizontalOptions="Center" Padding="0">
+                                            <Label Text="OR" TextColor="DarkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                        </Frame>
+                                    </Grid>
+                                </StackLayout>
+
+                                <StackLayout Margin="0,25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                    <Frame BackgroundColor="White" HeightRequest="45" WidthRequest="45" CornerRadius="45" HasShadow="False" BorderColor="DarkGray" Margin="0" HorizontalOptions="Center" Padding="0">
+                                        <Image Source="google_icon_131222" Aspect="AspectFill" Margin="0"/>
+                                    </Frame>
+                                    <Frame BackgroundColor="White" HeightRequest="45" WidthRequest="45" CornerRadius="45" HasShadow="False" BorderColor="DarkGray" Margin="0" HorizontalOptions="Center" Padding="0">
+                                        <Image Source="fb" Aspect="AspectFill" Margin="0"/>
+                                    </Frame>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+
+        </StackLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--<StackLayout Margin="10,100,10,0" Spacing="20">
+            
+            <Image Source="icon.png" HorizontalOptions="Center" />
+            
+            <StackLayout Spacing="10">
+                <Entry x:Name="userNameEntry" Text="{Binding Username}" Placeholder="Username" Keyboard="Email" />
+                <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="true" /> 
+            </StackLayout>
+            
+            <Button Text="Sign In" Command="{Binding SignInCommand}"
+                    BackgroundColor="#356DB8" TextColor="White"
+                    WidthRequest="125" HorizontalOptions="Center" />
+            
+        </StackLayout>-->
+        
+    </ContentPage.Content>
+</ContentPage>

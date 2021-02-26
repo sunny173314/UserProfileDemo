@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:converters="clr-namespace:UserProfileDemo.Converters" 
+    xmlns:local="clr-namespace:UserProfileDemo.CustomRenderer"
+    x:Class="UserProfileDemo.Pages.UserProfilePage"
+    Title="Your Profile"
+    BackgroundColor="White">
+
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Save" Command="{Binding SaveCommand}" />-->
+        <ToolbarItem  Text="Logout"  Command="{Binding LogoutCommand}"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ByteToImageFieldConverter x:Key="byteToImageSource" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            
+            <Grid Padding="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".25*" />
+                    <ColumnDefinition Width=".75*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.ColumnSpan="2" Padding="5">
+                    
+                    <Frame BackgroundColor="White"  
+                           HeightRequest="90" 
+                           WidthRequest="90" 
+                           CornerRadius="90" 
+                           Padding="0" 
+                           Margin="0" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center">
+
+                        <Image x:Name="imgCam" 
+                               Source="{Binding ImageData, Converter={StaticResource byteToImageSource}}"
+                               Aspect="AspectFill"  
+                               WidthRequest="90" 
+                               HeightRequest="90" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" 
+                               Margin="0">
+                        </Image>
+                        
+                    </Frame>
+                </StackLayout>
+                
+                <StackLayout 
+                    Orientation="Horizontal" 
+                    HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="CenterAndExpand" 
+                    Grid.Row="1" 
+                    Grid.ColumnSpan="2"  
+                    Margin="0">
+
+                    <Button 
+                            x:Name="btnCam" 
+                            Text="Take Photo"  
+                            Margin="2" 
+                            Command="{Binding SelectImgCommand}">
+                    </Button>
+
+                    <Button 
+                            Text="Upload Photo"  
+                            Command="{Binding SelectImageCommand}" 
+                            HorizontalOptions="Center">
+                    </Button>
+                </StackLayout>
+                
+                <Label 
+                    Grid.Row="2" 
+                    Grid.Column="0" 
+                    Text="FirstName:" 
+                    HorizontalOptions="End" 
+                    VerticalOptions="Center" />
+                                
+                <local:CustomEntry 
+                    Grid.Row="2" 
+                    Grid.Column="1" 
+                    Text="{Binding FirstName}"  
+                    VerticalOptions="Center"/>
+                
+                <Label 
+                    Grid.Row="3" 
+                    Grid.Column="0" 
+                    Text="LastName:" 
+                    HorizontalOptions="End" 
+                    VerticalOptions="Center" />
+                
+                <local:CustomEntry 
+                    Grid.Row="3" 
+                    Grid.Column="1" 
+                    Text="{Binding LastName}" 
+                    VerticalOptions="Center"/>
+                
+                <Label Grid.Row="4" 
+                       Grid.Column="0" 
+                       Text="Email:" 
+                       HorizontalOptions="End" 
+                       VerticalOptions="Center" />
+
+                <local:CustomEntry 
+                    Grid.Row="4" 
+                    Grid.Column="1" 
+                    Text="{Binding Email}" 
+                    VerticalOptions="Center" 
+                    IsEnabled="false" />
+                
+                <Label Grid.Row="5" 
+                       Grid.Column="0" 
+                       Text="Address:" 
+                       HorizontalOptions="End" 
+                       VerticalOptions="Center" />
+                
+                <local:CustomEntry 
+                    Grid.Row="5" 
+                    Grid.Column="1" 
+                    Text="{Binding Address}" 
+                    VerticalOptions="Center" />
+                
+                <Label 
+                    Grid.Row="6" 
+                    Grid.Column="0" 
+                    Text="Mobile:" 
+                    HorizontalOptions="End" 
+                    VerticalOptions="Center" />
+                
+                <local:CustomEntry 
+                    Grid.Row="6" 
+                    Grid.Column="1" 
+                    Text="{Binding PhoneNumber}" 
+                    Keyboard="Numeric" 
+                    VerticalOptions="Center" />
+
+                <Label 
+                    Grid.Row="7" 
+                    Grid.Column="0" 
+                    Text="Gender:" 
+                    HorizontalOptions="End" 
+                    VerticalOptions="Center"/>
+                
+                <Picker Grid.Row="7" 
+                        Grid.Column="1" 
+                        SelectedItem="{Binding Gender}"  
+                        VerticalOptions="Center">
+                    
+                    <Picker.Items >
+                        <x:String>Male</x:String>
+                        <x:String>Female</x:String>
+                    </Picker.Items>
+                    
+                </Picker>
+                
+                <Label 
+                    Grid.Row="8" 
+                    Grid.Column="0" 
+                    x:Name="BirthDate" 
+                    Text="BirhDate" 
+                    HorizontalOptions="End" 
+                    VerticalOptions="Center"/>
+                
+                <DatePicker 
+                    Grid.Row="8" 
+                    Grid.Column="1" 
+                    VerticalOptions="Center" 
+                    Date="{Binding BirhDate}" 
+                    DateSelected="DatePicker_DateSelected">
+
+                </DatePicker>
+
+                <ImageButton Source="pdf1.png" 
+                        Grid.Row="10"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="Transparent"
+                        WidthRequest="90"
+                        HeightRequest="90"
+                        FlexLayout.AlignSelf="Center"
+                        FlexLayout.Grow="1"
+                        Command="{Binding SaveCommand}"
+                        VerticalOptions="End" 
+                        HorizontalOptions="Center"
+                        Aspect="AspectFit">
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1"/>
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.8"/>
+                                </VisualState.Setters>
+                            </VisualState>
+
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
+
+                <!--<Button Grid.Row="10" Grid.ColumnSpan="2" Text="Save" Command="{Binding SaveCommand}" 
+                    TextColor="Red" VerticalOptions="End" HorizontalOptions="Center" />-->
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
